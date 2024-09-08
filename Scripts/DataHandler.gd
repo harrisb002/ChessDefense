@@ -6,7 +6,37 @@ var assets := []
 # 	can get the corresponding location for it
 
 # Create ordered list of Pieces
-enum PieceNames { BLACK_BISHOP, WHITE_BISHOP, BLACK_KING, WHITE_KING, BLACK_KNIGHT, WHITE_KNIGHT, BLACK_PAWN, WHITE_PAWN, BLACK_QUEEN, WHITE_QUEEN, BLACK_ROOK, WHITE_ROOK}
+enum PieceNames { 
+	BLACK_BISHOP, 
+	WHITE_BISHOP, 
+	BLACK_KING, 
+	WHITE_KING, 
+	BLACK_KNIGHT, 
+	WHITE_KNIGHT, 
+	BLACK_PAWN, 
+	WHITE_PAWN, 
+	BLACK_QUEEN, 
+	WHITE_QUEEN, 
+	BLACK_ROOK, 
+	WHITE_ROOK
+}
+
+# Dictionary to map fen string notation to the propper icons
+# rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+var fen_dict := {
+	"r" = PieceNames.BLACK_ROOK, 
+	"n" = PieceNames.BLACK_KNIGHT, 
+	"b" = PieceNames.BLACK_BISHOP, 
+	"q" = PieceNames.BLACK_QUEEN, 
+	"k" = PieceNames.BLACK_KING, 
+	"p" = PieceNames.BLACK_PAWN, 
+	"R" = PieceNames.WHITE_ROOK, 
+	"N" = PieceNames.WHITE_KNIGHT, 
+	"B" = PieceNames.WHITE_BISHOP, 
+	"Q" = PieceNames.WHITE_QUEEN, 
+	"K" = PieceNames.WHITE_KING, 
+	"P" = PieceNames.WHITE_PAWN, 
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

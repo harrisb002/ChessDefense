@@ -11,8 +11,9 @@ extends Control
 var grid_array := [] # Fetch slot instances 
 var piece_array := [] # Fetch piece instances 
 
-# Half of the slot size to use as offset
-var icon_offset := Vector2(30, 30)
+var icon_offset := Vector2(25, 25) # Using offset for size of icon/slots
+var fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" # Starting Position Fen String
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,10 +59,19 @@ func add_piece(piece_type, location) -> void:
 	# Set up the attributes
 	piece_array[location] = new_piece
 	new_piece.slot_ID = location
-	
-	
-	
 
 
 func _on_test_button_pressed() -> void:
 	add_piece(DataHandler.PieceNames.BLACK_KING, 3)
+
+
+func parse_fen(fen : String) -> void:
+	var boardstate = fen.split(" ")
+	var board_index := 0
+	for i in boardstate[0]: # Getting first portion of string
+		if i == "/": continue #Skip dashes
+		if i.is_valid_int(): # Check if number
+			board_index += i.to_int() # Add based on number of chars in string
+		else: 
+			# Now seen a letter so add a piece
+			add_piece(DataHandler.)
