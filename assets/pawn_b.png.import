@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vr31da6t8sp2"
-path="res://.godot/imported/pawn_b.png-a7c680dc84889f4c73008e98670cfded.ctex"
+path="res://.godot/imported/pawn_b.png-5c92c3edf07e0d9fff91ff48e72eb730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/pawn_b.png"
-dest_files=["res://.godot/imported/pawn_b.png-a7c680dc84889f4c73008e98670cfded.ctex"]
+source_file="res://assets/pawn_b.png"
+dest_files=["res://.godot/imported/pawn_b.png-5c92c3edf07e0d9fff91ff48e72eb730.ctex"]
 
 [params]
 
