@@ -13,7 +13,7 @@ func _ready() -> void:
 	for i in range(64):
 		create_slot()
 		
-	# Set color background based on even/odd
+	# Set color background based on even/odd to flip clorbit
 	var colorbit := 0
 	for i in range(8):
 		for j in range(8):
