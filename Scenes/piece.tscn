@@ -20,3 +20,5 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8gr7s")
 expand_mode = 5
+
+[connection signal="gui_input" from="Icon" to="." method="_on_icon_gui_input"]

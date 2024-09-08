@@ -14,6 +14,8 @@ var piece_array := [] # Fetch piece instances
 var icon_offset := Vector2(25, 25) # Using offset for size of icon/slots
 var fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" # Starting Position Fen String
 
+# Piece Movement
+var piece_selected = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,7 +61,16 @@ func add_piece(piece_type, location) -> void:
 	# Set up the attributes
 	piece_array[location] = new_piece
 	new_piece.slot_ID = location
+	
+	# Add a connection using the name of the signal passed by the piece
+	new_piece.piece_selected.connect(_on_piece_selected)
+	
 
+func _on_piece_selected(piece):
+	if not piece_selected:
+		piece_selected = piece # Set it to the passed piece from the emitted signal
+	else:
+		pass
 
 func _on_test_button_pressed() -> void:
 	#add_piece(DataHandler.PieceNames.BLACK_KING, 3)
