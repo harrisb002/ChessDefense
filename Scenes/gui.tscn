@@ -43,3 +43,14 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 8
 metadata/_edit_use_anchors_ = true
+
+[node name="TestButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 31.0
+offset_right = 973.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 30
+text = "Test"
+
+[connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]
