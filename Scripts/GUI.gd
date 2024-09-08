@@ -62,8 +62,8 @@ func add_piece(piece_type, location) -> void:
 
 
 func _on_test_button_pressed() -> void:
-	add_piece(DataHandler.PieceNames.BLACK_KING, 3)
-
+	#add_piece(DataHandler.PieceNames.BLACK_KING, 3)
+	parse_fen(fen) # Create starting board
 
 func parse_fen(fen : String) -> void:
 	var boardstate = fen.split(" ")
@@ -73,5 +73,6 @@ func parse_fen(fen : String) -> void:
 		if i.is_valid_int(): # Check if number
 			board_index += i.to_int() # Add based on number of chars in string
 		else: 
-			# Now seen a letter so add a piece
-			add_piece(DataHandler.)
+			# Now seen a letter so add a piece, add based on pieceType
+			add_piece(DataHandler.fen_dict[i], board_index)
+			board_index += 1
