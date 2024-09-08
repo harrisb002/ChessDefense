@@ -26,7 +26,7 @@ offset_right = 648.0
 offset_bottom = 648.0
 color = Color(0.55, 0.55, 0.55, 1)
 
-[node name="GridContainer" type="GridContainer" parent="ChessBoard"]
+[node name="BoardGrid" type="GridContainer" parent="ChessBoard"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
