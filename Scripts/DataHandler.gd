@@ -38,6 +38,9 @@ var fen_dict := {
 	"P" = PieceNames.WHITE_PAWN, 
 }
 
+# Used for Filter states to show possible movements
+enum slot_states{NONE, FREE}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Since I dont have many assets I wont read from directory
