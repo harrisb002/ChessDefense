@@ -112,17 +112,18 @@ func set_board_filter(bitmap : int):
 	for i in range(64):
 		if bitmap & 1: # If current bit is a 1
 			# Reversing the location index of the peices of the board based on how the c# code is written 
-			grid_array[63-i].set_filter(DataHandler.slot_states.FREE)
+			grid_array[i].set_filter(DataHandler.slot_states.FREE)
 		bitmap = bitmap >> 1 # Shift right
 
 
 func _on_test_button_pressed() -> void:
 	# add_piece(DataHandler.PieceNames.BLACK_KING, 3)
-	parse_fen(fen) # Create starting board
 	# set_board_filter(1023)
 	
-	# Testing Bitboard testFunction
-	bitboard.call("TestFunction")
+	# Testing Bitboard 
+	bitboard.call("InitBoard", fen)
+	set_board_filter(bitboard.call("GetBitboard"))
+	parse_fen(fen) # Create starting board
 
 
 func parse_fen(fen : String) -> void:

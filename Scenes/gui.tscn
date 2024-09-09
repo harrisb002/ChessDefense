@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch7cecyc6q2ds"]
+[gd_scene load_steps=4 format=3 uid="uid://ch7cecyc6q2ds"]
 
 [ext_resource type="Script" path="res://Scripts/GUI.gd" id="1_s4tpa"]
 [ext_resource type="Script" path="res://Scripts/Bitboard.cs" id="2_5nxqn"]
+[ext_resource type="Script" path="res://Scripts/DatahandlerCs.cs" id="3_2os42"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -56,5 +57,8 @@ text = "Test"
 
 [node name="Bitboard" type="Node" parent="."]
 script = ExtResource("2_5nxqn")
+
+[node name="DatahandlerCS" type="Node" parent="."]
+script = ExtResource("3_2os42")
 
 [connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]
