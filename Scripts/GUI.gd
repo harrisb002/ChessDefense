@@ -122,8 +122,11 @@ func _on_test_button_pressed() -> void:
 	
 	# Testing Bitboard 
 	bitboard.call("InitBoard", fen)
-	set_board_filter(bitboard.call("GetBitboard"))
+	#set_board_filter(bitboard.call("GetBitboard"))
+	
 	parse_fen(fen) # Create starting board
+	set_board_filter(bitboard.call("GetWhiteBoard"))
+	
 
 
 func parse_fen(fen : String) -> void:

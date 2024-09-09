@@ -70,6 +70,23 @@ public partial class Bitboard : Godot.Node
 		return blackPieces[0];
 	}
 
+	// Return the selected colors bitboard by combining all pieces and returning
+	public ulong GetBlackBoard(){
+		ulong pieces = 0;
+		foreach(ulong piece in blackPieces) {
+			pieces |= piece;
+		}
+		return pieces;
+	}
+	public ulong GetWhiteBoard(){
+		ulong pieces = 0;
+		foreach(ulong piece in whitePieces) {
+			pieces |= piece;
+		}
+		return pieces;
+	}
+
+
 	// public void TestFunction() {
 	// 	GD.Print("TestFunction is being called from the C# code!");
 	// }
