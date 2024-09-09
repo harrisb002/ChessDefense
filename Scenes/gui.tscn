@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch7cecyc6q2ds"]
+[gd_scene load_steps=3 format=3 uid="uid://ch7cecyc6q2ds"]
 
 [ext_resource type="Script" path="res://Scripts/GUI.gd" id="1_s4tpa"]
+[ext_resource type="Script" path="res://Scripts/Bitboard.cs" id="2_5nxqn"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -52,5 +53,8 @@ offset_right = 973.0
 offset_bottom = 103.0
 theme_override_font_sizes/font_size = 30
 text = "Test"
+
+[node name="Bitboard" type="Node" parent="."]
+script = ExtResource("2_5nxqn")
 
 [connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]

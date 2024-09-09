@@ -7,6 +7,10 @@ extends Control
 @onready var chessboard = $ChessBoard
 @onready var board_grid = $ChessBoard/BoardGrid
 
+# CSharp code refs
+@onready var bitboard = $Bitboard
+
+
 # Create container to save variables
 var grid_array := [] # Fetch slot instances 
 var piece_array := [] # Fetch piece instances 
@@ -113,16 +117,19 @@ func set_board_filter(bitmap : int):
 
 
 func _on_test_button_pressed() -> void:
-	#add_piece(DataHandler.PieceNames.BLACK_KING, 3)
+	# add_piece(DataHandler.PieceNames.BLACK_KING, 3)
 	parse_fen(fen) # Create starting board
-	#set_board_filter(1023)
+	# set_board_filter(1023)
+	
+	# Testing Bitboard testFunction
+	bitboard.call("TestFunction")
 
 
 func parse_fen(fen : String) -> void:
 	var boardstate = fen.split(" ")
 	var board_index := 0
 	for i in boardstate[0]: # Getting first portion of string
-		if i == "/": continue #Skip dashes
+		if i == "/": continue # Skip dashes
 		if i.is_valid_int(): # Check if number
 			board_index += i.to_int() # Add based on number of chars in string
 		else: 
