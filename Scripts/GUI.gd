@@ -4,12 +4,14 @@ extends Control
 @onready var slot_scene = preload("res://Scenes/slot.tscn")
 @onready var piece_scene = preload("res://Scenes/piece.tscn")
 
+# Board Refs
 @onready var chessboard = $ChessBoard
 @onready var board_grid = $ChessBoard/BoardGrid
-
-# CSharp code refs
 @onready var bitboard = $Bitboard
 
+# Piece move Refs
+@onready var Rook = $Rook
+@onready var PieceFactory = $PieceFactory
 
 # Create container to save variables
 var grid_array := [] # Fetch slot instances 
@@ -98,13 +100,31 @@ func add_piece(piece_type, location) -> void:
 
 
 func _on_piece_selected(piece):
-	if not piece_selected:
-		piece_selected = piece # Set it to the passed piece from the emitted signal
-	else:
-		# I clicking on a piece that is not the piece currently selected, then direct it into the slot clicked
-		# This is for captures
+	if piece_selected: 
 		_on_slot_clicked(grid_array[piece.slot_ID])
+	else:
+		piece_selected = piece # Set it to the passed piece from the emitted signal
+		# Call to return the paths for the Piece
+		var WhiteBoard = bitboard.call("GetWhiteBoard")
+		var BlackBoard = bitboard.call("GetBlackBoard")
+		var isBlack = true
+		var rook_moves = 0
 		
+		# Use the Rook piece instantiated as a class with its parameters
+		var rook = PieceFactory.call("CreateRook", piece.slot_ID, BlackBoard, WhiteBoard, isBlack)
+		
+		## Call the GeneratePath method to get all legal moves
+		#rook_moves = rook.GeneratePath()
+		#
+		## Set the board filter to highlight all legal moves
+		#set_board_filter(rook_moves)
+		
+	#if not piece_selected:
+		#piece_selected = piece # Set it to the passed piece from the emitted signal
+	#else:
+		## I clicking on a piece that is not the piece currently selected, then direct it into the slot clicked
+		## This is for captures
+		#_on_slot_clicked(grid_array[piece.slot_ID])
 
 
 # Use a bitboard (0-63 bits) to map the color of the filter 
@@ -125,7 +145,7 @@ func _on_test_button_pressed() -> void:
 	#set_board_filter(bitboard.call("GetBitboard"))
 	
 	parse_fen(fen) # Create starting board
-	set_board_filter(bitboard.call("GetWhiteBoard"))
+	#set_board_filter(bitboard.call("GetWhiteBoard"))
 	
 
 
